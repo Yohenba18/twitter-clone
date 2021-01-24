@@ -3,6 +3,7 @@ import "./Feed.css";
 import Post from "./Post";
 import TweetBox from "./TweetBox";
 import db from './Firebase';
+import FlipMove from "react-flip-move";
 
 function Feed() {
     const [posts,setPosts] = useState([]);
@@ -21,8 +22,10 @@ function Feed() {
       {/*Tweet Box */}
       <TweetBox />
        
+      <FlipMove>
       {posts.map(post => (
           <Post
+          key={post.text}
         displayName={post.displayName}
         username={post.username}
         verified={post.verified}
@@ -32,6 +35,8 @@ function Feed() {
       />
       ))}
 
+      </FlipMove>
+      
     </div>
   );
 }
